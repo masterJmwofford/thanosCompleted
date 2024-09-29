@@ -1,6 +1,8 @@
 const express= require('express')
 const app = express()
 const PORT = process.env.PORT || 3000
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
 const connectToDb = require('./config/connectToDb')
 connectToDb()
 const notesController = require('./controllers/notesControllers')
@@ -28,16 +30,11 @@ app.get("/notes/:id", notesController.fetchNote);
 app.post("/notes", notesController.createNote);
 
 // +++++++++++++ {CREATE} ++++++++++++++
-
 app.put("/notes/:id", notesController.updateNote);
 // +++++++++++++ {UPDATE} ++++++++++++++
 
 app.delete("/notes/:id", notesController.deleteNote);
 // +++++++++++++ {DELETE} ++++++++++++++
-
-
-
-
 
 // ------->------->-------> Server
 app.listen(PORT,()=>{

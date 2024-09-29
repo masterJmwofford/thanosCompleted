@@ -26,7 +26,7 @@ const createNote = async (req, res) => {
   // 3. Respond with copy of new Note
   // const title = req.body.title;
   // const body = req.body.body;
-  const {body} = req.body
+  const {title,body} = req.body
 
   // ------------------------------(1)
   const note = await Note.create({

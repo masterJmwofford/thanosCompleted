@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+.formAdmin{
+  border:solid white;
+}
+.formContainer{
+  border:solid red;
+  margin:1em;
+  display:flex;
+  justify-content: space-around;
+}
+input,textarea{
+  border:solid lime;
+  border-radius:8px;
+}
