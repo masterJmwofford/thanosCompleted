@@ -44,13 +44,13 @@ function App() {
   const fetchNotes = async () => {
     try {
       //  1.Make Request
-      const response = await axios.get("http://localhost:3000/notes")
+      const response = await axios.get("http://localhost:3000/notes");
       const info = await response.data;
       // 2. Save as State
       await setNotes(info.notes);
       console.log("Notes FETCHED");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   // -------------------------------------[UPDATE]
@@ -148,13 +148,37 @@ function App() {
               value={createForm.title}
               onChange={updateCreateFormField}
             />
-            <textarea
+            <input
               name="body"
               value={createForm.body}
               onChange={updateCreateFormField}
             />
             <button>CreateNote </button>
           </form>
+          {updateForm._id && (
+            <>
+              {/* --------Update Form */}
+              <h1>Update</h1>
+              <div className="formAdmin">
+                <form onSubmit={updateNote}>
+                  <input
+                    name="title"
+                    value={updateForm.title}
+                    placeholder="Enter Title"
+                    onChange={handleUpdateFieldChange}
+                  />
+                  <input
+                    name="body"
+                    value={updateForm.body}
+                    placeholder="Enter Body"
+                    onChange={handleUpdateFieldChange}
+                  />
+
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+            </>
+          )}
         </div>
         <hr />
         {/* -------> {form_split: } */}
