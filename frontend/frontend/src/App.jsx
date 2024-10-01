@@ -2,8 +2,12 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Index from "./components/Index";
-
+import AuthPage from "./pages/AuthPage"
+import Profile from "./components/Profile";
+import {getUser} from './utilities/users-service'
 function App() {
+  const [user,setUser]=useState(getUser())
+  // -------------------------------
   const [notes, setNotes] = useState([]);
   const [createForm, setCreateForm] = useState({
     title: "",
@@ -138,6 +142,9 @@ function App() {
 
   return (
     <div className="App">
+      {user? <Profile user={user} />: <AuthPage setUser={setUser}/>}
+
+<hr />
       <h1 className="noteTitle">Notes DashBoard</h1>
       <div className="formAdmin">
         <div className="formContainer">
@@ -181,11 +188,10 @@ function App() {
           )}
         </div>
         <hr />
-        {/* -------> {form_split: } */}
         {/* update Ternary -> if form is active, display updateForm component */}
       </div>
-
       {/* Notes ternary -> [IF] notes = true, [THEN] render Index,[ELSE] render Note component */}
+
       {notes ? (
         <Index info={notes} deleteFunc={deleteNote} editFunc={toggleUpdate} />
       ) : (

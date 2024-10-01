@@ -15,3 +15,10 @@
 // Establish state needed before the application
 // Create CRUD Routes 
 
+
+// USERS & AUTH
+// npm i bcrypt jsonwebtoken
+// ---models
+// ---controllers
+
+
